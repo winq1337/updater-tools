@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Quick one-line installer for updater-tools
+# Quick one-line installer for updater-tools with instant launch
 set -e
 
 REPO_URL="https://raw.githubusercontent.com/winq1337/updater-tools/main/updater-tools.sh"
@@ -16,5 +16,8 @@ curl -4 -fsSL "$REPO_URL" -o "${TARGET_DIR}/${BIN_NAME}"
 chmod +x "${TARGET_DIR}/${BIN_NAME}"
 
 echo "[✓] Успешно установлено в ${TARGET_DIR}/${BIN_NAME}"
-echo "    Теперь вы можете запускать утилиту командой:"
-echo "    sudo ${BIN_NAME}"
+echo "[🚀] Запуск Updater Tools..."
+echo ""
+
+# Автоматический запуск сразу после установки с пробросом переданных аргументов
+exec "${TARGET_DIR}/${BIN_NAME}" "$@"
